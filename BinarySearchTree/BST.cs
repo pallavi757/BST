@@ -52,6 +52,32 @@ namespace BinarySearchTree
         {
             Console.WriteLine("Size :" + (this.leftCount + this.rightCount + 1));
         }
+        public bool Search(T element, BST<T> node)
+        {
+            bool result = false;
+            if (node == null)
+            {
+                return false;
+            }
+            if (node.NodeData.Equals(element))
+            {
+                Console.WriteLine("Search perticular node:" + node.NodeData);
+                result = true;
+            }
+            else
+            {
+                Console.WriteLine("Current node is :" + node.NodeData);
+            }
+            if (element.CompareTo(node.NodeData) < 0)
+            {
+                Search(element, node.LeftTree);
+            }
+            if (element.CompareTo(node.NodeData) > 0)
+            {
+                Search(element, node.RightTree);
+            }
+            return result;
+        }
         public void Display()
         {
             if (this.LeftTree != null)
